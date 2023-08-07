@@ -3,14 +3,16 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import Layout from './layout';
-import Intro from './components/Intro';
-import Dashboard from './components/Dashboard';
+import Layout from './utils/layout';
+import Intro from './routes/Intro';
+import Dashboard from './routes/Dashboard';
 import Redirect from './utils/redirect';
+import Error404 from './routes/404';
+import BudgetDetails from './routes/BudgetDetails';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route element={<Layout />} path='/'>
+    <Route element={<Layout />} path='/' errorElement={<Error404 />}>
       <Route
         element={
           <Redirect>
@@ -27,6 +29,7 @@ const router = createBrowserRouter(
         }
         path='dashboard'
       />
+      <Route path='budget/:id' element={<BudgetDetails />} />
     </Route>
   )
 );

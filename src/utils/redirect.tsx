@@ -10,9 +10,7 @@ type RedirectPropsType = {
 const Redirect = ({ children }: RedirectPropsType) => {
   const location = useLocation();
   const userName = useSelector<RootState>((state) => state.user.name);
-  console.log('we"re in redirect', userName);
   if (!userName && location.pathname === '/dashboard') {
-    console.log('rrrrrrrrrrrrrrrrr');
     return <Navigate to='/' />;
   }
   if (userName && location.pathname === '/') {

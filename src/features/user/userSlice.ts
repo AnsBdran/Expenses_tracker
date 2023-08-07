@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addToDB, getFromDB, removeFromDB } from '../../utils/helpers';
+import { addToDB, clearDB, getFromDB, removeFromDB } from '../../utils/helpers';
 
 type InitialStateType = {
   name: string;
@@ -8,7 +8,7 @@ type InitialStateType = {
 const userName = getFromDB('userName');
 
 const initialState: InitialStateType = {
-  name: userName ? userName : 'aa',
+  name: userName ? userName : '',
 };
 
 const userSlice = createSlice({
@@ -20,10 +20,9 @@ const userSlice = createSlice({
       addToDB('userName', action.payload);
     },
     signOut: (state) => {
-      console.log('sign out', state.name);
-      removeFromDB('userName');
+      // removeFromDB('userName');
       state.name = '';
-      console.log('sign out', state.name);
+      clearDB();
     },
   },
 });

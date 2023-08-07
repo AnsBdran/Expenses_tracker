@@ -1,18 +1,40 @@
 export type BudgetType = {
-  id: number;
+  id: string;
   name: string;
   amount: number;
-  createdAt: Date;
+  createdAt: number;
 };
+
+export type BudgetDispatchedActionType = {
+  name: string
+  amount: number
+}
 
 export type ExpenseType = {
-  id: number;
+  id: string;
   name: string;
   amount: number;
-  createdAt: Date;
-  budgetId: number;
+  createdAt: number;
+  budget: {
+    name: string,
+    id: string
+  };
 };
 
-export type addToDBType = (key: string, value: string) => void;
+export type AddBudgetFormValuesType = {
+  name: string;
+  amount: number;
+};
+
+export type AddExpenseFormValuesType = {
+  name: string
+  amount: number
+  budget: string
+}
+export BudgetPayloadType = {
+  
+}
+
+export type addToDBType = (key: string, value: any) => void;
 
 export type removeFromDBType = (key: string) => void;
